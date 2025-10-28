@@ -225,20 +225,9 @@
     </section>
 
     <section style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
-        <div class="section-content">
-            <h2 class="section-title">AI-Generated Demo Videos</h2>
-            <p class="section-subtitle">Upload and play your local AI-generated video files</p>
-            
-            <div class="upload-section">
-                <h3>📹 Upload Your AI-Generated Videos</h3>
-                <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">Select local video files (MP4, WebM, OGG) to demonstrate AI capabilities</p>
-                <input type="file" id="videoUpload" accept="video/*" style="display: none;" onchange="loadVideo(event)">
-                <button class="upload-btn" onclick="document.getElementById('videoUpload').click()">Choose Video File</button>
-            </div>
-
-            <div class="video-container">
+           <div class="video-container">
                 <video id="demoVideo" controls style="width: 100%; max-height: 600px;">
-                    <source src="assets/videos/sample-ai-demo.mp4" type="video/mp4">
+                    <source src="assets/The AI Factory.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -393,12 +382,7 @@
             "Service Catalog Demonstration"
         ];
         
-        // Simulate video metadata
-        document.addEventListener('DOMContentLoaded', function() {
-            const video = document.getElementById('demoVideo');
-            video.addEventListener('error', function() {
-                document.getElementById('videoDescription').textContent = 'Demo video not found. Please upload your AI-generated video file using the button above.';
-            });
+  
         });
     </script>
 </body>
