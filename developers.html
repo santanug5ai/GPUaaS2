@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developers | AI-Factory Platform</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #1a1a1a; background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c); background-size: 400% 400%; }
+        header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(30, 60, 114, 0.5); }
+        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; }
+        .logo-text { color: white; font-size: 1.8rem; font-weight: 800; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+        .nav-links a:hover { color: #f5576c; }
+        .hero-small { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 60px 2rem; text-align: center; }
+        .hero-small h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero-small p { font-size: 1.3rem; color: #e0e0ff; }
+        section { padding: 80px 2rem; }
+        .section-content { max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: #ffffff; font-weight: 800; }
+        .section-subtitle { text-align: center; font-size: 1.2rem; color: rgba(255, 255, 255, 0.95); margin-bottom: 3rem; }
+        
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; margin-top: 2rem; }
+        .video-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); transition: all 0.3s ease; }
+        .video-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); }
+        .video-container { position: relative; background: #000; }
+        .video-container video { width: 100%; height: 250px; object-fit: cover; }
+        .video-info { padding: 2rem; }
+        .video-info h3 { color: #1e3c72; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .video-info p { color: #666; line-height: 1.6; }
+        .upload-section { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 2px dashed rgba(255, 255, 255, 0.3); border-radius: 20px; padding: 3rem; text-align: center; margin-bottom: 3rem; }
+        .upload-section h3 { color: white; font-size: 1.8rem; margin-bottom: 1rem; }
+        .upload-btn { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 1rem 2rem; border: none; border-radius: 25px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        .upload-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6); }
+        
+        .code-section { background: white; border-radius: 20px; padding: 3rem; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .code-section h2 { color: #1e3c72; margin-bottom: 1.5rem; font-size: 2rem; }
+        .code-example { background: #1e1e1e; color: #d4d4d4; padding: 1.5rem; border-radius: 10px; overflow-x: auto; font-family: 'Courier New', monospace; line-height: 1.6; }
+        .code-example pre { margin: 0; }
+        
+        .api-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .api-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border-left: 5px solid #f5576c; }
+        .api-card h3 { color: #1e3c72; font-size: 1.8rem; margin-bottom: 1rem; }
+        .api-card p { color: #666; margin-bottom: 1rem; }
+        .api-badge { display: inline-block; padding: 0.3rem 0.8rem; background: linear-gradient(135deg, #f093fb, #f5576c); color: white; border-radius: 12px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        
+        footer { background: linear-gradient(135deg, #2d3561 0%, #1f2a50 100%); color: white; padding: 2rem; text-align: center; }
+        footer p { color: #ccc; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🏭</div>
+                <span class="logo-text">AI-Factory</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="service-catalog.html">Catalog</a></li>
+                <li><a href="developers.html">Developers</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-small">
+        <h1>👨‍💻 Developer Documentation</h1>
+        <p>Build and deploy GPU-accelerated AI applications with our comprehensive APIs</p>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+        <div class="section-content">
+            <h2 class="section-title">Video Tutorials</h2>
+            <p class="section-subtitle">Learn how to build and deploy GPU-accelerated applications</p>
+            
+            <div class="upload-section">
+                <h3>📹 Upload Tutorial Videos</h3>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">Add your AI-generated tutorial videos (MP4, WebM, OGG)</p>
+                <input type="file" id="tutorialUpload1" accept="video/*" style="display: none;" onchange="loadTutorialVideo(event, 1)">
+                <button class="upload-btn" onclick="document.getElementById('tutorialUpload1').click()">Choose Video File</button>
+            </div>
+
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-container">
+                        <video id="tutorial1" controls>
+                            <source src="assets/videos/getting-started-gpu.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3>Getting Started with GPU Computing</h3>
+                        <p>Introduction to GPU acceleration and CUDA programming fundamentals</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <video id="tutorial2" controls>
+                            <source src="assets/videos/deploy-ai-model.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3>Deploy Your First AI Model</h3>
+                        <p>Step-by-step guide to deploying machine learning models on GPU infrastructure</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <video id="tutorial3" controls>
+                            <source src="assets/videos/rag-application.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3>Building Production RAG Applications</h3>
+                        <p>Create scalable retrieval-augmented generation systems using GPUs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #667eea, #764ba2);">
+        <div class="section-content">
+            <div class="code-section" style="background: rgba(255,255,255,0.95);">
+                <h2>Quick Start - IaaS API</h2>
+                <p style="color: #666; margin-bottom: 1.5rem;">Launch GPU instances programmatically using our Infrastructure API</p>
+                <div class="code-example">
+                    <pre>pip install ai-factory-sdk
+
+from ai_factory import GPUClient
+
+# Initialize client
+client = GPUClient(api_key="your_api_key")
+
+# Launch GPU instance
+instance = client.create_instance(
+    gpu_type="NVIDIA-H100",
+    gpu_count=2,
+    memory_gb=128,
+    region="us-east-1"
+)
+
+print(f"Instance ID: {instance.id}")
+print(f"Status: {instance.status}")
+print(f"IP Address: {instance.ip_address}")</pre>
+                </div>
+            </div>
+
+            <div class="code-section" style="background: rgba(255,255,255,0.95);">
+                <h2>PaaS - Model Training Example</h2>
+                <p style="color: #666; margin-bottom: 1.5rem;">Train AI models using our managed platform</p>
+                <div class="code-example">
+                    <pre>from ai_factory import TrainingPlatform
+
+# Initialize training platform
+platform = TrainingPlatform(api_key="your_api_key")
+
+# Create training job
+job = platform.create_training_job(
+    name="bert-fine-tuning",
+    framework="pytorch",
+    gpu_type="A100",
+    gpu_count=4,
+    script="train.py",
+    dataset="s3://my-bucket/dataset",
+    hyperparameters={
+        "learning_rate": 2e-5,
+        "batch_size": 32,
+        "epochs": 3
+    }
+)
+
+# Monitor training
+for log in job.stream_logs():
+    print(log)</pre>
+                </div>
+            </div>
+
+            <div class="code-section" style="background: rgba(255,255,255,0.95);">
+                <h2>SaaS - Inference API</h2>
+                <p style="color: #666; margin-bottom: 1.5rem;">Call pre-trained models via REST API</p>
+                <div class="code-example">
+                    <pre>import requests
+
+API_URL = "https://api.ai-factory.com/v1/inference"
+API_KEY = "your_api_key"
+
+# Text generation
+response = requests.post(
+    f"{API_URL}/text-generation",
+    headers={"Authorization": f"Bearer {API_KEY}"},
+    json={
+        "model": "gpt-4",
+        "prompt": "Explain quantum computing",
+        "max_tokens": 500,
+        "temperature": 0.7
+    }
+)
+
+result = response.json()
+print(result["generated_text"])</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+        <div class="section-content">
+            <h2 class="section-title">API Endpoints</h2>
+            <p class="section-subtitle">Comprehensive REST APIs for all service layers</p>
+            
+            <div class="api-grid">
+                <div class="api-card">
+                    <span class="api-badge">IaaS API</span>
+                    <h3>Infrastructure Management</h3>
+                    <p><strong>Base URL:</strong> https://api.ai-factory.com/v1/iaas</p>
+                    <ul style="list-style: none; padding-left: 0; color: #555;">
+                        <li>• POST /instances - Create GPU instance</li>
+                        <li>• GET /instances - List instances</li>
+                        <li>• DELETE /instances/{id} - Terminate</li>
+                        <li>• POST /instances/{id}/scale - Scale resources</li>
+                    </ul>
+                </div>
+                
+                <div class="api-card">
+                    <span class="api-badge">PaaS API</span>
+                    <h3>Training & Deployment</h3>
+                    <p><strong>Base URL:</strong> https://api.ai-factory.com/v1/paas</p>
+                    <ul style="list-style: none; padding-left: 0; color: #555;">
+                        <li>• POST /training-jobs - Create training job</li>
+                        <li>• GET /training-jobs - List jobs</li>
+                        <li>• POST /deployments - Deploy model</li>
+                        <li>• GET /models - List models</li>
+                    </ul>
+                </div>
+                
+                <div class="api-card">
+                    <span class="api-badge">SaaS API</span>
+                    <h3>Model Inference</h3>
+                    <p><strong>Base URL:</strong> https://api.ai-factory.com/v1/inference</p>
+                    <ul style="list-style: none; padding-left: 0; color: #555;">
+                        <li>• POST /text-generation - Generate text</li>
+                        <li>• POST /image-generation - Generate images</li>
+                        <li>• POST /embeddings - Get embeddings</li>
+                        <li>• POST /classification - Classify data</li>
+                    </ul>
+                </div>
+                
+                <div class="api-card">
+                    <span class="api-badge">TMF API</span>
+                    <h3>BSS Integration</h3>
+                    <p><strong>Base URL:</strong> https://api.ai-factory.com/tmf</p>
+                    <ul style="list-style: none; padding-left: 0; color: #555;">
+                        <li>• TMF620 - Product Catalog</li>
+                        <li>• TMF622 - Product Order</li>
+                        <li>• TMF633 - Service Catalog</li>
+                        <li>• TMF638 - Service Inventory</li>
+                    </ul>
+                </div>
+                
+                <div class="api-card">
+                    <span class="api-badge">Monitoring API</span>
+                    <h3>Observability</h3>
+                    <p><strong>Base URL:</strong> https://api.ai-factory.com/v1/monitoring</p>
+                    <ul style="list-style: none; padding-left: 0; color: #555;">
+                        <li>• GET /metrics - Resource metrics</li>
+                        <li>• GET /logs - Application logs</li>
+                        <li>• GET /traces - Distributed traces</li>
+                        <li>• POST /alerts - Create alerts</li>
+                    </ul>
+                </div>
+                
+                <div class="api-card">
+                    <span class="api-badge">Admin API</span>
+                    <h3>Management</h3>
+                    <p><strong>Base URL:</strong> https://api.ai-factory.com/v1/admin</p>
+                    <ul style="list-style: none; padding-left: 0; color: #555;">
+                        <li>• GET /users - User management</li>
+                        <li>• POST /api-keys - Generate keys</li>
+                        <li>• GET /billing - Billing info</li>
+                        <li>• POST /quotas - Manage quotas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; text-align: center;">
+        <div class="section-content">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Ready to Build?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2.5rem;">Start developing with AI-Factory APIs today</p>
+            <a href="docs.html" style="display: inline-block; padding: 1rem 2.5rem; background: linear-gradient(135deg, #f093fb, #f5576c); color: white; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1rem;">
+                View Full Documentation →
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>AI-Factory Developer Platform | RESTful APIs • SDKs • TMF Open APIs</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Built on RedHat OpenShift with NVIDIA AI Enterprise Framework</p>
+    </footer>
+
+    <script>
+        function loadTutorialVideo(event, videoNum) {
+            const file = event.target.files[0];
+            if (file) {
+                const video = document.getElementById(`tutorial${videoNum}`);
+                const url = URL.createObjectURL(file);
+                video.src = url;
+                video.load();
+                video.play();
+            }
+        }
+
+        // Handle video errors gracefully
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.addEventListener('error', function() {
+                    const container = this.closest('.video-info');
+                    if (container) {
+                        const infoText = container.querySelector('p');
+                        if (infoText) {
+                            infoText.textContent = 'Video not found. Upload your tutorial video using the button above.';
+                            infoText.style.color = '#999';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

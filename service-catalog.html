@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Catalog | AI-Factory Platform</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #1a1a1a; background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c); background-size: 400% 400%; }
+        header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(30, 60, 114, 0.5); }
+        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; }
+        .logo-text { color: white; font-size: 1.8rem; font-weight: 800; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+        .nav-links a:hover { color: #f5576c; }
+        .hero-small { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 60px 2rem; text-align: center; }
+        .hero-small h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero-small p { font-size: 1.3rem; color: #e0e0ff; }
+        section { padding: 80px 2rem; }
+        .section-content { max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: #ffffff; font-weight: 800; }
+        .section-subtitle { text-align: center; font-size: 1.2rem; color: rgba(255, 255, 255, 0.95); margin-bottom: 3rem; }
+        
+        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .catalog-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); transition: all 0.3s ease; border-left: 5px solid #f5576c; }
+        .catalog-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); }
+        .catalog-badge { display: inline-block; padding: 0.4rem 1rem; background: linear-gradient(135deg, #f093fb, #f5576c); color: white; border-radius: 15px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; }
+        .catalog-card h3 { font-size: 1.8rem; color: #1e3c72; margin-bottom: 1rem; font-weight: 700; }
+        .catalog-card p { color: #666; margin-bottom: 1.5rem; line-height: 1.6; }
+        .catalog-features { list-style: none; padding-left: 0; margin-bottom: 1.5rem; }
+        .catalog-features li { padding: 0.5rem 0 0.5rem 1.5rem; position: relative; color: #555; }
+        .catalog-features li:before { content: '✓'; position: absolute; left: 0; color: #f5576c; font-weight: bold; }
+        .catalog-btn { display: inline-block; padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 20px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+        .catalog-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+        
+        .tier-section { background: white; border-radius: 20px; padding: 3rem; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .tier-section h2 { color: #1e3c72; margin-bottom: 2rem; font-size: 2rem; }
+        
+        footer { background: linear-gradient(135deg, #2d3561 0%, #1f2a50 100%); color: white; padding: 2rem; text-align: center; }
+        footer p { color: #ccc; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🏭</div>
+                <span class="logo-text">AI-Factory</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="service-catalog.html">Catalog</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-small">
+        <h1>🛍️ Service Catalog</h1>
+        <p>Comprehensive AI solutions across Infrastructure, Platform, and Software layers</p>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #667eea, #764ba2);">
+        <div class="section-content">
+            <h2 class="section-title">Infrastructure-as-a-Service (IaaS)</h2>
+            <p class="section-subtitle">Direct GPU access for maximum control and flexibility</p>
+            
+            <div class="catalog-grid">
+                <div class="catalog-card">
+                    <span class="catalog-badge">IaaS</span>
+                    <h3>GPU-as-a-Service</h3>
+                    <p>Enterprise-grade GPU infrastructure with Kubernetes orchestration</p>
+                    <ul class="catalog-features">
+                        <li>NVIDIA H100, A100, V100 GPUs</li>
+                        <li>RedHat OpenShift deployment</li>
+                        <li>Multi-tenant support</li>
+                        <li>Fractional GPU allocation</li>
+                        <li>Root server access</li>
+                    </ul>
+                    <a href="pricing.html#iaas" class="catalog-btn">View Pricing →</a>
+                </div>
+                
+                <div class="catalog-card">
+                    <span class="catalog-badge">IaaS</span>
+                    <h3>Bare Metal Servers</h3>
+                    <p>Dedicated servers for high-performance computing workloads</p>
+                    <ul class="catalog-features">
+                        <li>Custom OS installation</li>
+                        <li>Direct hardware control</li>
+                        <li>Private VPC networks</li>
+                        <li>InfiniBand networking</li>
+                        <li>Storage-optimized options</li>
+                    </ul>
+                    <a href="pricing.html#iaas" class="catalog-btn">View Pricing →</a>
+                </div>
+                
+                <div class="catalog-card">
+                    <span class="catalog-badge">IaaS</span>
+                    <h3>Kubernetes Clusters</h3>
+                    <p>Managed Kubernetes with GPU node pools</p>
+                    <ul class="catalog-features">
+                        <li>Auto-scaling GPU nodes</li>
+                        <li>Multi-region deployment</li>
+                        <li>Helm chart repository</li>
+                        <li>Monitoring & logging</li>
+                        <li>99.95% uptime SLA</li>
+                    </ul>
+                    <a href="pricing.html#iaas" class="catalog-btn">View Pricing →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+        <div class="section-content">
+            <h2 class="section-title">Platform-as-a-Service (PaaS)</h2>
+            <p class="section-subtitle">Managed AI development platforms with NVIDIA AIE toolkit</p>
+            
+            <div class="catalog-grid">
+                <div class="catalog-card">
+                    <span class="catalog-badge">PaaS</span>
+                    <h3>AI Development Environment</h3>
+                    <p>Pre-configured environments for AI/ML development</p>
+                    <ul class="catalog-features">
+                        <li>Jupyter Lab & VSCode</li>
+                        <li>PyTorch, TensorFlow, JAX</li>
+                        <li>CUDA toolkit pre-installed</li>
+                        <li>Collaborative notebooks</li>
+                        <li>Version control integration</li>
+                    </ul>
+                    <a href="pricing.html#paas" class="catalog-btn">View Pricing →</a>
+                </div>
+                
+                <div class="catalog-card">
+                    <span class="catalog-badge">PaaS</span>
+                    <h3>MLOps Platform</h3>
+                    <p>Complete MLOps pipeline with CI/CD for models</p>
+                    <ul class="catalog-features">
+                        <li>MLflow for experiment tracking</li>
+                        <li>Model registry & versioning</li>
+                        <li>Automated training pipelines</li>
+                        <li>A/B testing framework</li>
+                        <li>Model monitoring & drift detection</li>
+                    </ul>
+                    <a href="pricing.html#paas" class="catalog-btn">View Pricing →</a>
+                </div>
+                
+                <div class="catalog-card">
+                    <span class="catalog-badge">PaaS</span>
+                    <h3>Data Management</h3>
+                    <p>Enterprise data pipelines and storage solutions</p>
+                    <ul class="catalog-features">
+                        <li>Apache Spark on GPUs</li>
+                        <li>RAPIDS data processing</li>
+                        <li>Vector database (Milvus)</li>
+                        <li>Data versioning (DVC)</li>
+                        <li>ETL pipeline automation</li>
+                    </ul>
+                    <a href="pricing.html#paas" class="catalog-btn">View Pricing →</a>
+                </div>
+                
+                <div class="catalog-card">
+                    <span class="catalog-badge">PaaS</span>
+                    <h3>Model Serving</h3>
+                    <p>Deploy and scale AI models in production</p>
+                    <ul class="catalog-features">
+                        <li>NVIDIA Triton Inference Server</li>
+                        <li>Auto-scaling inference</li>
+                        <li>Multi-model serving</li>
+                        <li>Load balancing</li>
+                        <li>REST & gRPC APIs</li>
+                    </ul>
+                    <a href="pricing.html#paas" class="catalog-btn">View Pricing →</a>
+                </div>
+                
+                <div class="catalog-card">
+                    <span class="catalog-badge">PaaS</span>
+                    <h3>Observability Suite</h3>
+                    <p>Monitor, trace, and debug AI applications</p>
+                    <ul class="catalog-features">
+                        <li>Prometheus & Grafana</li>
+                        <li>GPU utilization metrics</li>
+                        <li>Distributed tracing</li>
+                        <li>Log aggregation</li>
+                        <li>Alert management</li>
+                    </ul>
+                    <a href="pricing.html#paas" class="catalog-btn">View Pricing →</a>
+                </div>
+                
+                <div class="catalog-card">
+                    <span class="catalog-badge">PaaS</span>
+                    <h3>API Gateway</h3>
+                    <p>Secure API management with TMF Open API support</p>
+                    <ul class="catalog-features">
+                        <li>TMF Open API standards</li>
+                        <li>Authentication & authorization</li>
+                        <li>Rate limiting</li>
+                        <li>API documentation</li>
+                        <li>Webhook support</li>
+                    </ul>
+                    <a href="pricing.html#paas" class="catalog-btn">View Pricing →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+        <div class="section-content">
+            <h2 class="section-title">Software-as-a-Service (SaaS)</h2>
+            <p class="section-subtitle">Ready-to-use AI applications and industry solutions</p>
+            
+            <div class="catalog-grid">
+                <div class="catalog-card">
+                    <span class="catalog-badge">SaaS - Telco</span>
+                    <h3>5G Network Intelligence</h3>
+                    <p>AI-powered network optimization and analytics</p>
+                    <ul class="catalog-features">
+                        <li>5G slicing optimization</li>
+                        <li>Network as code integration</li>
+                        <li>Predictive maintenance</li>
+                        <li>Traffic forecasting</li>
+                        <li>QoS monitoring</li>
+                    </ul>
+                    <a href="pricing.html#saas" class="catalog-btn">View Pricing →</a>
+                </div>
+                
+                <div class="catalog-card">
+                    <span class="catalog-badge">SaaS - Security</span>
+                    <h3>AI Security Suite</h3>
+                    <p>Threat detection and cybersecurity automation</p>
+                    <ul class="catalog-features">
+                        <li>Anomaly detection</li>
+                        <li>Threat intelligence</li>
+                        <li>Automated response</li>
+                        <li>Security analytics</li>
+                        <li>Compliance reporting</li>
+                    </ul>
+                    <a href="pricing.html#saas" class="catalog-btn">View Pricing →</a>
+                </div>
+                
+                <div class="catalog-card">
+                    <span class="catalog-badge">SaaS - Analytics</span>
+                    <h3>Data Analytics Platform</h3>
+                    <p>Business intelligence with AI insights</p>
+                    <ul class="catalog-features">
+                        <li>Predictive analytics</li>
+                        <li>Real-time dashboards</li>
+                        <li>Customer segmentation</li>
+                        <li>Churn prediction</li>
+                        <li>Revenue forecasting</li>
+                    </ul>
+                    <a href="pricing.html#saas" class="catalog-btn">View Pricing →</a>
+                </div>
+                
+                <div class="catalog-card">
+                    <span class="catalog-badge">SaaS - Location</span>
+                    <h3>Location Intelligence</h3>
+                    <p>Geospatial AI and location-based services</p>
+                    <ul class="catalog-features">
+                        <li>Location analytics</li>
+                        <li>Route optimization</li>
+                        <li>Geofencing services</li>
+                        <li>Asset tracking</li>
+                        <li>Spatial data analysis</li>
+                    </ul>
+                    <a href="pricing.html#saas" class="catalog-btn">View Pricing →</a>
+                </div>
+                
+                <div class="catalog-card">
+                    <span class="catalog-badge">SaaS - AI Models</span>
+                    <h3>Model Inference API</h3>
+                    <p>Pre-trained models for common AI tasks</p>
+                    <ul class="catalog-features">
+                        <li>Computer vision models</li>
+                        <li>NLP & LLM APIs</li>
+                        <li>Speech recognition</li>
+                        <li>Document processing</li>
+                        <li>&lt;100ms latency</li>
+                    </ul>
+                    <a href="pricing.html#saas" class="catalog-btn">View Pricing →</a>
+                </div>
+                
+                <div class="catalog-card">
+                    <span class="catalog-badge">SaaS - Governance</span>
+                    <h3>AI Governance & Compliance</h3>
+                    <p>Data sovereignty and compliance management</p>
+                    <ul class="catalog-features">
+                        <li>Data sovereignty controls</li>
+                        <li>Audit logging</li>
+                        <li>Compliance reporting</li>
+                        <li>Model explainability</li>
+                        <li>Privacy preservation</li>
+                    </ul>
+                    <a href="pricing.html#saas" class="catalog-btn">View Pricing →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #667eea, #764ba2);">
+        <div class="section-content">
+            <div class="tier-section" style="background: rgba(255,255,255,0.95);">
+                <h2>🎯 Service Integration</h2>
+                <p style="color: #666; font-size: 1.1rem; margin-bottom: 2rem;">
+                    All services integrate seamlessly with Business Support Systems (BSS) through:
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div style="padding: 1.5rem; background: linear-gradient(135deg, #f093fb, #f5576c); border-radius: 15px; color: white;">
+                        <h3 style="margin-bottom: 0.5rem;">📋 TMF Open APIs</h3>
+                        <p>Product, Order, and Service Inventory management</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: linear-gradient(135deg, #4facfe, #00f2fe); border-radius: 15px; color: white;">
+                        <h3 style="margin-bottom: 0.5rem;">🔐 Self-Service Portals</h3>
+                        <p>End client portals or Enterprise BU BSS integration</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 15px; color: white;">
+                        <h3 style="margin-bottom: 0.5rem;">🤝 Partner Ecosystem</h3>
+                        <p>Co-created solutions with selected partners</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <h2 style="color: white; font-size: 2rem; margin-bottom: 1rem;">Need a Custom Solution?</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; margin-bottom: 2rem;">
+                    Our Product Teams can co-create tailored AI solutions for your business domain
+                </p>
+                <a href="mailto:contact@ai-factory.com" style="display: inline-block; padding: 1rem 2.5rem; background: linear-gradient(135deg, #f093fb, #f5576c); color: white; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1rem;">
+                    Contact Sales Team →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>AI-Factory Service Catalog | Infrastructure • Platform • Software Solutions</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Built on RedHat OpenShift with NVIDIA AI Enterprise Framework</p>
+    </footer>
+</body>
+</html>

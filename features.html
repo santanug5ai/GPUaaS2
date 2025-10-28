@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - AI-Factory | Enterprise GPU Infrastructure</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1a1a1a; background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); background-size: 400% 400%; animation: gradientShift 15s ease infinite; }
+        header { background: linear-gradient(135deg, #667eea, #764ba2); padding: 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(102,126,234,.5); }
+        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #f093fb, #f5576c); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; box-shadow: 0 8px 20px rgba(245,87,108,.4); }
+        .logo-text { color: white; font-size: 2rem; font-weight: 800; }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 600; transition: all .3s; }
+        .nav-links a:hover { color: #f5576c; }
+        .login-btn { background: linear-gradient(135deg, #f093fb, #f5576c); padding: 0.7rem 1.8rem; border-radius: 25px; box-shadow: 0 4px 15px rgba(245,87,108,.4); }
+        .page-header { background: linear-gradient(135deg, #1e3c72, #2a5298, #7e22ce); color: white; padding: 80px 2rem; text-align: center; }
+        .page-header h1 { font-size: 3.2rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .page-header .subtitle { font-size: 1.3rem; color: #ffd700; margin-bottom: 1rem; font-weight: 600; }
+        .page-header p { font-size: 1.2rem; color: rgba(255,255,255,0.95); }
+        section { padding: 80px 2rem; }
+        .section-content { max-width: 1200px; margin: 0 auto; }
+        .feature-block { background: white; border-radius: 30px; padding: 3rem; margin-bottom: 3rem; box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .feature-block h2 { font-size: 2.2rem; color: #667eea; margin-bottom: 1rem; font-weight: 800; }
+        .feature-block p { font-size: 1.1rem; color: #555; margin-bottom: 2rem; line-height: 1.8; }
+        .feature-list { list-style: none; }
+        .feature-list li { padding: 0.8rem 0 0.8rem 2rem; position: relative; color: #333; font-size: 1.05rem; }
+        .feature-list li:before { content: '✓'; position: absolute; left: 0; color: #f5576c; font-weight: bold; font-size: 1.3rem; }
+        .video-embed { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); background: #000; margin-bottom: 2rem; }
+        .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        footer { background: linear-gradient(135deg, #2d3561, #1f2a50); color: white; padding: 3rem 2rem 1rem; }
+        .footer-contact { background: linear-gradient(135deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1)); border-left: 4px solid #f5576c; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .footer-contact h4 { color: #ffd700; margin-bottom: 0.5rem; font-size: 1.3rem; }
+        .footer-contact p { color: #e0e0e0; font-size: 1.1rem; line-height: 1.6; }
+        .footer-contact strong { color: #fff; font-size: 1.2rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
+        .footer-section h4 { font-size: 1.3rem; margin-bottom: 1rem; color: #f5576c; font-weight: 700; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.7rem; }
+        .footer-section a { color: #ccc; text-decoration: none; transition: all 0.3s; }
+        .footer-section a:hover { color: #f5576c; padding-left: 5px; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #999; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">⚡</div>
+                <span class="logo-text">AI-Factory</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="features.html">Features</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="developers.html">Developers</a></li>
+                <li><a href="partners.html">Partners</a></li>
+                <li><a href="docs.html">Docs</a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>Enterprise GPU Features</h1>
+        <p class="subtitle">IaaS • PaaS • SaaS Capabilities</p>
+        <p>Comprehensive infrastructure for AI training, deployment, and scaling</p>
+    </section>
+
+    <section>
+        <div class="section-content">
+            <div class="feature-block">
+                <h2>🚀 Infrastructure as a Service (IaaS)</h2>
+                <p>Full control over GPU infrastructure with enterprise-grade hardware and network capabilities. Deploy bare-metal or virtualized instances with root access.</p>
+                <div class="video-embed">
+                    <iframe src="https://www."assets/videos/demo.mp4"" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <ul class="feature-list">
+                    <li>Direct GPU access with CUDA, ROCm, and OpenCL support</li>
+                    <li>Custom OS installations (Ubuntu, CentOS, Rocky Linux, Windows Server)</li>
+                    <li>Private VPC networking with configurable subnets and security groups</li>
+                    <li>High-performance NVMe storage with RAID configurations</li>
+                    <li>InfiniBand networking for multi-node GPU clusters</li>
+                    <li>Load balancers, floating IPs, and DNS management</li>
+                    <li>Snapshot and backup automation for disaster recovery</li>
+                    <li>API-driven infrastructure provisioning (Terraform, Ansible compatible)</li>
+                </ul>
+            </div>
+
+            <div class="feature-block">
+                <h2>🔧 Platform as a Service (PaaS)</h2>
+                <p>Managed machine learning platforms eliminating infrastructure complexity. Focus on model development while we handle deployment, scaling, and monitoring.</p>
+                <div class="video-embed">
+                    <iframe src="https://www."assets/videos/demo.mp4"" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <ul class="feature-list">
+                    <li>Pre-configured ML environments with PyTorch, TensorFlow, JAX, and Keras</li>
+                    <li>Managed Jupyter Notebook servers with collaborative features</li>
+                    <li>VS Code Remote Development with GPU debugging support</li>
+                    <li>MLflow experiment tracking and model registry integration</li>
+                    <li>Automated hyperparameter tuning with Optuna and Ray Tune</li>
+                    <li>Managed Kubernetes clusters optimized for GPU workloads</li>
+                    <li>CI/CD pipelines for model training and deployment automation</li>
+                    <li>Auto-scaling based on queue depth and GPU utilization</li>
+                </ul>
+            </div>
+
+            <div class="feature-block">
+                <h2>☁️ Software as a Service (SaaS)</h2>
+                <p>Production-ready AI APIs requiring zero infrastructure management. Deploy sophisticated AI capabilities through simple REST API calls.</p>
+                <div class="video-embed">
+                    <iframe src="https://www."assets/videos/demo.mp4"" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <ul class="feature-list">
+                    <li>Pre-trained LLM APIs (GPT-4 class models for text generation)</li>
+                    <li>Computer vision APIs for image classification and object detection</li>
+                    <li>Natural language processing for sentiment analysis and entity extraction</li>
+                    <li>Speech-to-text and text-to-speech conversion APIs</li>
+                    <li>Custom model fine-tuning without infrastructure provisioning</li>
+                    <li>Automatic load balancing and request routing</li>
+                    <li>Rate limiting and quota management per API key</li>
+                    <li>Real-time inference with sub-100ms latency</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-contact">
+            <h4>📞 Connect with Our Industry Consultant</h4>
+            <p>To get more about AI-Factory, Connect <strong>Mr. Santanu Ghosh</strong> - Industry Consultant</p>
+            <p>Get expert consultation on enterprise GPU solutions, technical architecture, and deployment strategies.</p>
+        </div>
+        <div class="footer-content">
+            <div class="footer-section"><h4>Solutions</h4><ul><li><a href="pricing.html#iaas">IaaS</a></li><li><a href="pricing.html#paas">PaaS</a></li><li><a href="pricing.html#saas">SaaS</a></li><li><a href="features.html">Features</a></li></ul></div>
+            <div class="footer-section"><h4>Open Source</h4><ul><li><a href="https://pytorch.org/" target="_blank">PyTorch</a></li><li><a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a></li><li><a href="https://huggingface.co/" target="_blank">Hugging Face</a></li></ul></div>
+            <div class="footer-section"><h4>Resources</h4><ul><li><a href="docs.html">Documentation</a></li><li><a href="developers.html">APIs</a></li><li><a href="https://www.kaggle.com/" target="_blank">Kaggle</a></li></ul></div>
+            <div class="footer-section"><h4>Company</h4><ul><li><a href="partners.html">Partners</a></li><li><a href="index.html">Home</a></li><li><a href="login.html">Login</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>AI-Factory - Enterprise AI Cloud Platform Platform | IaaS • PaaS • SaaS Solutions</p></div>
+    </footer>
+</body>
+</html>

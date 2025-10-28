@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal | AI-Factory</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #667eea, #764ba2); min-height: 100vh; }
+        .admin-container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .admin-header { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .admin-header h1 { color: #1e3c72; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .admin-header p { color: #666; font-size: 1.1rem; }
+        .back-link { display: inline-block; padding: 0.8rem 1.5rem; background: linear-gradient(135deg, #f093fb, #f5576c); color: white; border-radius: 20px; text-decoration: none; font-weight: 600; margin-bottom: 2rem; }
+        .back-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4); }
+        
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .dashboard-card { background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+        .dashboard-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .dashboard-card h3 { color: #1e3c72; font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .dashboard-card .stat { font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+        .dashboard-card p { color: #666; font-size: 1rem; }
+        
+        .control-panel { background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+        .control-panel h2 { color: #1e3c72; font-size: 2rem; margin-bottom: 2rem; }
+        .control-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .control-btn { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 1.5rem; border-radius: 15px; text-align: center; cursor: pointer; transition: all 0.3s ease; border: none; font-size: 1rem; font-weight: 600; }
+        .control-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); }
+        .control-btn.danger { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .control-btn.success { background: linear-gradient(135deg, #a8edea, #00c9ff); }
+        
+        .resource-table { background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+        .resource-table h2 { color: #1e3c72; font-size: 2rem; margin-bottom: 1.5rem; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 1rem; text-align: left; font-weight: 600; }
+        td { padding: 1rem; border-bottom: 1px solid #e0e0e0; color: #555; }
+        tr:hover { background: #f8f9ff; }
+        .status-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.85rem; font-weight: 600; }
+        .status-active { background: #d4edda; color: #155724; }
+        .status-warning { background: #fff3cd; color: #856404; }
+        .status-error { background: #f8d7da; color: #721c24; }
+        
+        .progress-bar { background: #e0e0e0; border-radius: 10px; height: 20px; overflow: hidden; margin-top: 0.5rem; }
+        .progress-fill { background: linear-gradient(135deg, #667eea, #764ba2); height: 100%; transition: width 0.3s ease; text-align: center; color: white; font-size: 0.75rem; line-height: 20px; font-weight: 600; }
+        
+        .alert-box { background: linear-gradient(135deg, #fff3cd, #ffeaa7); border-left: 4px solid #ffc107; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; }
+        .alert-box h3 { color: #856404; margin-bottom: 0.5rem; }
+        .alert-box p { color: #856404; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="admin-header">
+            <h1>🎛️ Admin Portal</h1>
+            <p>GPUaaS Infrastructure Management & Monitoring Dashboard</p>
+        </div>
+
+        <div class="alert-box">
+            <h3>⚠️ System Status: Operational</h3>
+            <p>All services running normally. Last updated: <strong>2025-10-28 15:47 UTC</strong></p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <h3>🖥️ Active GPU Instances</h3>
+                <div class="stat">847</div>
+                <p>Across all service tiers</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 84.7%;">84.7%</div>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <h3>👥 Active Users</h3>
+                <div class="stat">2,341</div>
+                <p>Enterprise customers online</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 67%;">67%</div>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <h3>📊 Total Workloads</h3>
+                <div class="stat">5,129</div>
+                <p>Running AI/ML jobs</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 92%;">92%</div>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <h3>💰 Revenue Today</h3>
+                <div class="stat">$48K</div>
+                <p>Across all services</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 76%;">76%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-panel">
+            <h2>🔧 Quick Actions</h2>
+            <div class="control-grid">
+                <button class="control-btn">
+                    🚀 Deploy New Instance
+                </button>
+                <button class="control-btn success">
+                    ✅ Scale Resources
+                </button>
+                <button class="control-btn">
+                    🔄 Restart Services
+                </button>
+                <button class="control-btn">
+                    📈 View Analytics
+                </button>
+                <button class="control-btn success">
+                    👤 User Management
+                </button>
+                <button class="control-btn danger">
+                    ⚙️ System Settings
+                </button>
+            </div>
+        </div>
+
+        <div class="resource-table">
+            <h2>📦 GPU Resource Allocation</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>GPU Model</th>
+                        <th>Total Units</th>
+                        <th>In Use</th>
+                        <th>Available</th>
+                        <th>Utilization</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>NVIDIA H100</strong></td>
+                        <td>128</td>
+                        <td>112</td>
+                        <td>16</td>
+                        <td>
+                            <div class="progress-bar" style="height: 15px;">
+                                <div class="progress-fill" style="width: 87.5%; font-size: 0.7rem; line-height: 15px;">87.5%</div>
+                            </div>
+                        </td>
+                        <td><span class="status-badge status-active">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>NVIDIA A100</strong></td>
+                        <td>256</td>
+                        <td>198</td>
+                        <td>58</td>
+                        <td>
+                            <div class="progress-bar" style="height: 15px;">
+                                <div class="progress-fill" style="width: 77.3%; font-size: 0.7rem; line-height: 15px;">77.3%</div>
+                            </div>
+                        </td>
+                        <td><span class="status-badge status-active">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>NVIDIA V100</strong></td>
+                        <td>384</td>
+                        <td>341</td>
+                        <td>43</td>
+                        <td>
+                            <div class="progress-bar" style="height: 15px;">
+                                <div class="progress-fill" style="width: 88.8%; font-size: 0.7rem; line-height: 15px;">88.8%</div>
+                            </div>
+                        </td>
+                        <td><span class="status-badge status-warning">High Load</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>NVIDIA T4</strong></td>
+                        <td>512</td>
+                        <td>196</td>
+                        <td>316</td>
+                        <td>
+                            <div class="progress-bar" style="height: 15px;">
+                                <div class="progress-fill" style="width: 38.3%; font-size: 0.7rem; line-height: 15px;">38.3%</div>
+                            </div>
+                        </td>
+                        <td><span class="status-badge status-active">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="resource-table">
+            <h2>🏢 OpenShift Cluster Status</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cluster Name</th>
+                        <th>Region</th>
+                        <th>Nodes</th>
+                        <th>Pods</th>
+                        <th>CPU Usage</th>
+                        <th>Memory Usage</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ai-factory-prod-us</strong></td>
+                        <td>US East</td>
+                        <td>48/50</td>
+                        <td>1,247</td>
+                        <td>
+                            <div class="progress-bar" style="height: 15px;">
+                                <div class="progress-fill" style="width: 73%; font-size: 0.7rem; line-height: 15px;">73%</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="progress-bar" style="height: 15px;">
+                                <div class="progress-fill" style="width: 68%; font-size: 0.7rem; line-height: 15px;">68%</div>
+                            </div>
+                        </td>
+                        <td><span class="status-badge status-active">Healthy</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ai-factory-prod-eu</strong></td>
+                        <td>EU West</td>
+                        <td>42/45</td>
+                        <td>1,089</td>
+                        <td>
+                            <div class="progress-bar" style="height: 15px;">
+                                <div class="progress-fill" style="width: 65%; font-size: 0.7rem; line-height: 15px;">65%</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="progress-bar" style="height: 15px;">
+                                <div class="progress-fill" style="width: 71%; font-size: 0.7rem; line-height: 15px;">71%</div>
+                            </div>
+                        </td>
+                        <td><span class="status-badge status-active">Healthy</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ai-factory-prod-ap</strong></td>
+                        <td>Asia Pacific</td>
+                        <td>36/40</td>
+                        <td>892</td>
+                        <td>
+                            <div class="progress-bar" style="height: 15px;">
+                                <div class="progress-fill" style="width: 58%; font-size: 0.7rem; line-height: 15px;">58%</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="progress-bar" style="height: 15px;">
+                                <div class="progress-fill" style="width: 62%; font-size: 0.7rem; line-height: 15px;">62%</div>
+                            </div>
+                        </td>
+                        <td><span class="status-badge status-active">Healthy</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="resource-table">
+            <h2>📋 Recent Activities</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>User</th>
+                        <th>Action</th>
+                        <th>Resource</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15:45:23</td>
+                        <td>admin@enterprise-a.com</td>
+                        <td>Created GPU Instance</td>
+                        <td>H100 x2</td>
+                        <td><span class="status-badge status-active">Success</span></td>
+                    </tr>
+                    <tr>
+                        <td>15:42:18</td>
+                        <td>user@enterprise-b.com</td>
+                        <td>Scaled Workload</td>
+                        <td>A100 x4 → x8</td>
+                        <td><span class="status-badge status-active">Success</span></td>
+                    </tr>
+                    <tr>
+                        <td>15:38:45</td>
+                        <td>admin@enterprise-c.com</td>
+                        <td>Deployed Model</td>
+                        <td>Triton Server</td>
+                        <td><span class="status-badge status-active">Success</span></td>
+                    </tr>
+                    <tr>
+                        <td>15:35:12</td>
+                        <td>devops@enterprise-d.com</td>
+                        <td>Updated Configuration</td>
+                        <td>K8s Cluster</td>
+                        <td><span class="status-badge status-warning">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>15:30:55</td>
+                        <td>system</td>
+                        <td>Auto-Scaling Triggered</td>
+                        <td>V100 Pool</td>
+                        <td><span class="status-badge status-active">Completed</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="control-panel">
+            <h2>🔐 Security & Access Control</h2>
+            <div class="control-grid">
+                <button class="control-btn">
+                    👤 Manage Users
+                </button>
+                <button class="control-btn">
+                    🔑 API Keys
+                </button>
+                <button class="control-btn">
+                    📜 Audit Logs
+                </button>
+                <button class="control-btn">
+                    🛡️ Firewall Rules
+                </button>
+                <button class="control-btn">
+                    🌐 VPC Networks
+                </button>
+                <button class="control-btn danger">
+                    ⚠️ Security Alerts
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

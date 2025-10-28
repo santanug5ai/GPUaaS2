@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Factory | Enterprise AI Cloud Platform - IaaS • PaaS • SaaS Solutions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #1a1a1a; background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c); background-size: 400% 400%; animation: gradientShift 15s ease infinite; overflow-x: hidden; }
+        header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%); padding: 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(30, 60, 114, 0.5); border-bottom: 3px solid rgba(255, 255, 255, 0.2); }
+        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; transition: transform 0.3s ease; }
+        .logo:hover { transform: scale(1.05); }
+        .logo-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; font-weight: bold; box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4); }
+        .logo-text { color: white; font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background: #f5576c; transition: width 0.3s ease; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: #f5576c; }
+        .login-btn { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 0.7rem 1.8rem; border-radius: 25px; color: white !important; font-weight: 700; box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4); }
+        .login-btn::after { display: none; }
+        .login-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6); }
+        .hero { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%); color: white; padding: 120px 2rem; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>'); opacity: 0.5; }
+        .hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero h1 { font-size: 3.8rem; margin-bottom: 1rem; font-weight: 800; color: #ffffff; line-height: 1.2; animation: fadeInUp 0.8s ease; }
+        .hero h1 .highlight { background: linear-gradient(135deg, #ffd700, #ffed4e, #ffd700); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 3s ease infinite; }
+        .hero .subtitle { font-size: 1.5rem; margin-bottom: 1rem; color: #ffd700; font-weight: 600; animation: fadeInUp 0.8s ease 0.1s both; }
+        .hero p { font-size: 1.4rem; margin-bottom: 2.5rem; color: #e0e0ff; line-height: 1.8; animation: fadeInUp 0.8s ease 0.2s both; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.8s ease 0.4s both; }
+        .cta-btn { padding: 1rem 2.5rem; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .cta-primary { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4); }
+        .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(245, 87, 108, 0.6); }
+        .cta-secondary { background: rgba(255, 255, 255, 0.15); color: white; border: 2px solid white; backdrop-filter: blur(10px); }
+        .cta-secondary:hover { background: white; color: #667eea; transform: translateY(-3px); }
+        .service-models { padding: 80px 2rem; background: linear-gradient(135deg, #667eea, #764ba2); }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; max-width: 1400px; margin: 0 auto; }
+        .service-card { background: white; border-radius: 25px; padding: 3rem; text-align: center; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); transition: all 0.3s ease; }
+        .service-card:hover { transform: translateY(-15px); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3); }
+        .service-badge { display: inline-block; padding: 0.5rem 1.5rem; background: linear-gradient(135deg, #f093fb, #f5576c); color: white; border-radius: 20px; font-size: 0.9rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .service-card h3 { font-size: 2.2rem; color: #667eea; margin-bottom: 1rem; font-weight: 800; }
+        .service-card .description { color: #666; margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.8; }
+        .service-features { list-style: none; text-align: left; margin-bottom: 2rem; }
+        .service-features li { padding: 0.7rem 0 0.7rem 2rem; position: relative; color: #555; border-bottom: 1px solid #f0f0f0; }
+        .service-features li:before { content: '✓'; position: absolute; left: 0; color: #f5576c; font-weight: bold; font-size: 1.3rem; }
+        section { padding: 80px 2rem; }
+        .section-content { max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.8rem; margin-bottom: 1rem; color: #ffffff; font-weight: 800; }
+        .section-subtitle { text-align: center; font-size: 1.2rem; color: rgba(255, 255, 255, 0.95); margin-bottom: 4rem; font-weight: 500; }
+        
+        /* Local Video Player Styles */
+        .video-container { 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); 
+            position: relative; 
+            background: #000; 
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 2rem;
+        }
+        .video-container video { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+        }
+        .video-controls {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            text-align: center;
+        }
+        .video-info {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            margin-top: 1rem;
+        }
+        .video-info h3 {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .video-info p {
+            color: #666;
+            font-size: 1rem;
+        }
+        .upload-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .upload-section h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .upload-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+        }
+        
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .feature-card { background: white; padding: 2.5rem; border-radius: 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); }
+        .feature-icon { width: 90px; height: 90px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2.8rem; box-shadow: 0 8px 25px rgba(245, 87, 108, 0.3); transition: transform 0.3s ease; }
+        .feature-card:hover .feature-icon { transform: scale(1.1) rotate(5deg); }
+        .feature-card h3 { font-size: 1.6rem; margin-bottom: 1rem; color: #1a1a1a; font-weight: 700; }
+        .feature-card p { color: #666; line-height: 1.8; font-size: 1rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: center; }
+        .stat-item h3 { font-size: 3.5rem; margin-bottom: 0.5rem; font-weight: 900; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .stat-item p { font-size: 1.2rem; color: #333; font-weight: 600; }
+        
+        footer { background: linear-gradient(135deg, #2d3561 0%, #1f2a50 100%); color: white; padding: 3rem 2rem 1rem; }
+        .footer-contact { background: linear-gradient(135deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1)); border-left: 4px solid #f5576c; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .footer-contact h4 { color: #ffd700; margin-bottom: 0.5rem; font-size: 1.3rem; }
+        .footer-contact p { color: #e0e0e0; font-size: 1.1rem; line-height: 1.6; }
+        .footer-contact strong { color: #fff; font-size: 1.2rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
+        .footer-section h4 { font-size: 1.3rem; margin-bottom: 1rem; color: #f5576c; font-weight: 700; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.7rem; }
+        .footer-section a { color: #ccc; text-decoration: none; transition: all 0.3s ease; }
+        .footer-section a:hover { color: #f5576c; padding-left: 5px; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #999; }
+        @media (max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 2.5rem; } .hero p { font-size: 1.1rem; } .section-title { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🏭</div>
+                <span class="logo-text">AI-Factory</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="features.html">Features</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="developers.html">Developers</a></li>
+                <li><a href="service-catalog.html">Service Catalog</a></li>
+                <li><a href="docs.html">Docs</a></li>
+                <li><a href="admin.html">Admin Portal</a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Enterprise <span class="highlight">AI-Factory</span> Platform</h1>
+            <p class="subtitle">IaaS • PaaS • SaaS Solutions</p>
+            <p>Transform your business with comprehensive AI infrastructure. From GPU-as-a-Service to complete AI application platforms. Built on RedHat OpenShift with NVIDIA AIE Reference Framework.</p>
+            <div class="cta-buttons">
+                <a href="service-catalog.html" class="cta-btn cta-primary">Explore Service Catalog →</a>
+                <a href="docs.html" class="cta-btn cta-secondary">Technical Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-models">
+        <div class="section-content">
+            <h2 class="section-title">Three-Layer Service Architecture</h2>
+            <p class="section-subtitle">Choose the right level of control for your AI workloads</p>
+            <div class="service-grid">
+                <div class="service-card">
+                    <span class="service-badge">INFRASTRUCTURE</span>
+                    <h3>IaaS</h3>
+                    <p class="description">Infrastructure-as-a-Service</p>
+                    <ul class="service-features">
+                        <li>GPU-as-a-Service (GPUaaS)</li>
+                        <li>RedHat OpenShift Container Platform</li>
+                        <li>Multi-tenant GPU sharing</li>
+                        <li>Kubernetes-based deployment</li>
+                        <li>Server-level GPU access</li>
+                        <li>Admin tools for management</li>
+                        <li>Fractional GPU allocation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <span class="service-badge">PLATFORM</span>
+                    <h3>PaaS</h3>
+                    <p class="description">Platform-as-a-Service</p>
+                    <ul class="service-features">
+                        <li>NVIDIA AI Enterprise toolkit</li>
+                        <li>AI development environments</li>
+                        <li>Data management & processing</li>
+                        <li>Model training & deployment</li>
+                        <li>Monitoring & management tools</li>
+                        <li>API-based integrations</li>
+                        <li>Comprehensive service catalog</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <span class="service-badge">SOFTWARE</span>
+                    <h3>SaaS</h3>
+                    <p class="description">Software-as-a-Service</p>
+                    <ul class="service-features">
+                        <li>Pre-built AI applications</li>
+                        <li>Telco & security services</li>
+                        <li>Data analytics & location services</li>
+                        <li>Model inference & training</li>
+                        <li>Observability & sovereignty</li>
+                        <li>Vertical industry solutions</li>
+                        <li>QoS for stable performance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+        <div class="section-content">
+            <h2 class="section-title">AI-Generated Demo Videos</h2>
+            <p class="section-subtitle">Upload and play your local AI-generated video files</p>
+            
+            <div class="upload-section">
+                <h3>📹 Upload Your AI-Generated Videos</h3>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">Select local video files (MP4, WebM, OGG) to demonstrate AI capabilities</p>
+                <input type="file" id="videoUpload" accept="video/*" style="display: none;" onchange="loadVideo(event)">
+                <button class="upload-btn" onclick="document.getElementById('videoUpload').click()">Choose Video File</button>
+            </div>
+
+            <div class="video-container">
+                <video id="demoVideo" controls style="width: 100%; max-height: 600px;">
+                    <source src="assets/videos/sample-ai-demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 id="videoTitle">AI-Factory Platform Overview</h3>
+                <p id="videoDescription">This video demonstrates the comprehensive AI-Factory platform capabilities including GPU-as-a-Service, AI development tools, and enterprise solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #667eea, #764ba2);">
+        <div class="section-content">
+            <h2 class="section-title">Enterprise Features</h2>
+            <p class="section-subtitle">Built for production AI workloads</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>OpenShift Platform</h3>
+                    <p>RedHat OpenShift Container Platform for enterprise-grade Kubernetes deployment with GPU multi-tenancy support.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>NVIDIA AIE Framework</h3>
+                    <p>Based on NVIDIA AI Enterprise reference framework with select tools from the NVIDIA AI Enterprise toolkit.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Data Sovereignty</h3>
+                    <p>Enterprise-grade security with data sovereignty controls, observability tools, and compliance features.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>5G Integration</h3>
+                    <p>Synergies with 5G slicing, network as code, and public cloud solutions for telco use cases.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>TMF Open APIs</h3>
+                    <p>Integration with Business Support Systems using TMF Open APIs for product, order, and service inventory.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Multi-Tenancy</h3>
+                    <p>Within-server multi-tenancy allowing individual or fractional GPU allocation as Kubernetes nodes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+        <div class="section-content">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>10,000+</h3>
+                    <p>Enterprise Customers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99.95%</h3>
+                    <p>Uptime SLA</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>GPU Models</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Expert Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
+        <div class="section-content">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 800;">Ready to Transform Your AI Infrastructure?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2.5rem;">Join leading enterprises leveraging AI-Factory for production AI workloads</p>
+            <div class="cta-buttons">
+                <a href="pricing.html" class="cta-btn cta-primary">View Pricing & Plans →</a>
+                <a href="docs.html" class="cta-btn cta-secondary">Technical Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-contact">
+            <h4>📞 Connect with Our Industry Consultant</h4>
+            <p>To get more about AI-Factory, Connect <strong>Mr. Santanu Ghosh</strong> - Industry Consultant</p>
+            <p>Get personalized consultation on enterprise AI solutions, technical architecture, and custom deployment strategies.</p>
+        </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="pricing.html#iaas">IaaS - Infrastructure</a></li>
+                    <li><a href="pricing.html#paas">PaaS - Platform</a></li>
+                    <li><a href="pricing.html#saas">SaaS - Software</a></li>
+                    <li><a href="features.html">All Features</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="service-catalog.html">Service Catalog</a></li>
+                    <li><a href="admin.html">Admin Portal</a></li>
+                    <li><a href="https://www.openshift.com/" target="_blank">RedHat OpenShift</a></li>
+                    <li><a href="https://www.nvidia.com/en-us/data-center/products/ai-enterprise/" target="_blank">NVIDIA AIE</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="docs.html">Documentation</a></li>
+                    <li><a href="developers.html">Developer APIs</a></li>
+                    <li><a href="https://www.tmforum.org/open-apis/" target="_blank">TMF Open APIs</a></li>
+                    <li><a href="https://kubernetes.io/" target="_blank">Kubernetes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="partners.html">Partner Programs</a></li>
+                    <li><a href="https://www.redhat.com/en/technologies/cloud-computing/openshift" target="_blank">OpenShift Training</a></li>
+                    <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+                    <li><a href="login.html">Customer Portal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>AI-Factory - Enterprise AI Cloud Platform | IaaS • PaaS • SaaS Solutions | Built on RedHat OpenShift & NVIDIA AIE</p>
+        </div>
+    </footer>
+
+    <script>
+        function loadVideo(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const video = document.getElementById('demoVideo');
+                const url = URL.createObjectURL(file);
+                video.src = url;
+                document.getElementById('videoTitle').textContent = file.name.replace(/\.[^/.]+$/, "");
+                document.getElementById('videoDescription').textContent = `Playing local file: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+                video.load();
+                video.play();
+            }
+        }
+
+        // Add sample video titles for demo
+        const videoTitles = [
+            "AI-Factory Platform Overview",
+            "GPU-as-a-Service Deployment",
+            "AI Model Training Pipeline",
+            "Service Catalog Demonstration"
+        ];
+        
+        // Simulate video metadata
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('demoVideo');
+            video.addEventListener('error', function() {
+                document.getElementById('videoDescription').textContent = 'Demo video not found. Please upload your AI-generated video file using the button above.';
+            });
+        });
+    </script>
+</body>
+</html>
